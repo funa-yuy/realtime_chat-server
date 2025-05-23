@@ -9,7 +9,7 @@ export default function ChatApp() {
 	const [messages, setMessages] = useState<string[]>([]);
 
 	useEffect(() => {
-		const newSocket = io('http://localhost:3000');
+		const newSocket = io(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000');
 		setSocket(newSocket);
 
 		//chat messageイベントが発生し、msgを受信したら
