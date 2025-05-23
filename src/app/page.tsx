@@ -18,7 +18,9 @@ export default function ChatApp() {
 			setMessages(prev => [...prev, msg]);
 		});
 
-		return () => newSocket.close();
+		return () => {
+			newSocket.close();
+		};
 	}, []);
 
 	useEffect(() => {
