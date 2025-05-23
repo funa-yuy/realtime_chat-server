@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
 	//接続されたら
 	console.log('接続されました');
 
-	//messageが送られたら
+	//chat messageイベントが発生し、msgを受信したら
 	socket.on('chat message', (msg) => {
 		console.log('message: ' + msg);
 		io.emit('chat message', msg);
