@@ -79,3 +79,31 @@ body {
 #messages>li:nth-child(odd) {
 	background: #efefef;
 }
+
+
+/* 共通 */
+h1 {
+	font-weight: bold;
+	font-size: xx-large;
+	padding: 20px 0;
+}
+
+/* "次へ"ボタン */
+
+.btn-wrapper {
+	margin: 1rem 1rem;
+}
+
+.btn {
+	display: inline-block;
+	padding: 1rem 1.5rem;
+	background-color: #BDBDBD;
+	color: #101010;
+	border-radius: 0.25rem;
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.btn:hover {
+	background-color: #86b8e9;
+}
