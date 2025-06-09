@@ -16,15 +16,16 @@ export default function HoldData() {
 	return (
 		<div>
 			<h1>文字列データ保持</h1>
-			<form onSubmit={handleSubmit}>
-				<input type="text"
-					placeholder="テキストを入力してください"
-					value={text}
-					onChange={e => setText(e.target.value)}
-				/>
-				<button type="submit">回答を送信</button>
-			</form>
-
+			<div className="send-form">
+				<form onSubmit={handleSubmit}>
+					<input type="text"
+						placeholder="テキストを入力してください"
+						value={text}
+						onChange={e => setText(e.target.value)}
+					/>
+					<button className="send-btn" type="submit">送信</button>
+				</form>
+			</div>
 			<div className="btn-wrapper">
 				<Link href="/hold-data/display-data" className="btn">回答確認へ</Link>
 			</div>
