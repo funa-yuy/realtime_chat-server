@@ -1,0 +1,37 @@
+# クライアント専用リポジトリの .github/workflows/deploy.yml に配置
+name: Client Build and Deploy Test
+
+on:
+  push:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+
+    # client: 依存関係インストール(npm ciの方がnpm installより高速なため使用)
+    - name: Install dependencies
+      run: npm ci
+
+    # client: コード品質チェック
+    - name: Run ESLint
+      run: npm run lint
+
+    # client: 本番環境と同じビルドプロセスを実行（Vercel互換）
+    - name: Test production build (Vercel-like)
+      run: npm run build
+
+    # client: Vercelデプロイテスト（オプション）
+    - name: Check Vercel compatibility
+      run: |
+        test -f next.config.ts || test -f next.config.js || exit 1
+        test -f package.json || exit 1
+        echo "Vercel deployment files present"
