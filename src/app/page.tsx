@@ -8,6 +8,7 @@ export default function First() {
 			<h1>卒制</h1>
 			<div>
 				<ul>
+					<li><Link href="./hold-data">文字列データ保持</Link></li>
 					<li><Link href="./transition">ページ遷移</Link></li>
 					<li><Link href="./chat">リアルタイムチャット</Link></li>
 				</ul>

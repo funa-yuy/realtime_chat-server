@@ -88,7 +88,7 @@ h1 {
 	padding: 20px 0;
 }
 
-/* "次へ"ボタン */
+/* Link ボタン */
 
 .btn-wrapper {
 	margin: 1rem 1rem;
@@ -106,4 +106,36 @@ h1 {
 
 .btn:hover {
 	background-color: #86b8e9;
+}
+
+
+/* hold-data 送信ボタン */
+.send-form {
+	margin: 1rem 1rem;
+}
+
+.send-btn {
+	/* レイアウト */
+	margin: 0 1rem;
+
+	/* 見た目 */
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	background-color: #BDBDBD;
+	color: #101010;
+	border-radius: 0.25rem;
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+	background-color: #86b8e9;
+}
+
+.send-form input {
+	/* 見た目 */
+	background-color: #ffffff;
+	padding: 0.5rem 1rem;
+	outline: solid 0.1rem #BDBDBD;
+	border-radius: 0.25rem;
 }
