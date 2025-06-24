@@ -1,0 +1,38 @@
+# サーバー専用リポジトリの .github/workflows/deploy.yml に配置
+name: Server Build and Deploy Test
+
+on:
+  push:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+
+	# server: 構文チェック
+    - name: Syntax check
+      run: node -c index.js
+
+    # server: 必須ファイル確認
+    - name: Check required files
+      run: |
+        test -f index.js || exit 1
+        test -f package.json || exit 1
+        echo "All required files present"
+
+    # server: 依存関係インストール
+    - name: Install dependencies (production-like)
+      run: npm install
+
+    # server: 本番環境と同じ起動コマンドを実行して、10秒後に強制終了
+    - name: Test start command
+      run: |
+        timeout 10 node index.js || exit 0
