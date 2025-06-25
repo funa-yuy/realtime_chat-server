@@ -88,6 +88,12 @@ h1 {
 	padding: 20px 0;
 }
 
+h2 {
+	font-weight: bold;
+	font-size: x-large;
+	padding: 16px 0;
+}
+
 /* Link ボタン */
 
 .btn-wrapper {

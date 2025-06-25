@@ -11,6 +11,7 @@ export default function First() {
 					<li><Link href="./hold-data">文字列データ保持</Link></li>
 					<li><Link href="./transition">ページ遷移</Link></li>
 					<li><Link href="./chat">リアルタイムチャット</Link></li>
+					<li><Link href="./by-role">役割ごと別画面を表示（条件付きレンダー）</Link></li>
 				</ul>
 			</div>
 		</div >
