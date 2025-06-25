@@ -1,4 +1,46 @@
 @import "tailwindcss";
+
+:root {
+	/* ---------- レイアウト ---------- */
+	--max-width: 736px;
+
+	/* ---------- フォントサイズ ---------- */
+	--font-size-h1: 2rem;
+	--font-size-h2: 1.5rem;
+	--font-size-base: 1rem;
+	--font-size-small: 0.875rem;
+
+	/* ---------- カラーパレット ---------- */
+	--color-body-bg: #eee;
+	--color-html-bg: #fff;
+
+	/* テキスト */
+	--color-text-primary: #101010;
+	--color-text-white: #fff;
+
+	/* ボタン */
+	--color-button-default: #BDBDBD;
+	--color-button-hover: #86b8e9;
+
+	/* 双方向チャット機能 */
+	--color-chat-messages-bg: #FBFBFB;
+	--color-chat-form-bg: #D9D9D9;
+
+	/* hold-data テキスト送信欄 */
+	--color-input-background: #ffffff;
+	--color-input-border: #BDBDBD;
+}
+
+/* 736px以下でのレスポンシブ調整 -------------------------------------------------------- */
+@media (max-width: 736px) {
+	:root {
+		--font-size-h1: 1.5rem;
+		--font-size-h2: 1.25rem;
+		--font-size-base: 0.875rem;
+		--font-size-small: 0.75rem;
+	}
+}
+
 /*
 :root {
 	--background: #ffffff;
@@ -25,23 +67,63 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 } */
 
-body {
-	margin: 0;
-	padding-bottom: 3rem;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* 共通 -------------------------------------------------------- */
+html {
+	background-color: var(--color-html-bg);
 }
 
+body {
+	padding-bottom: 3rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	font-size: var(--font-size-base);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	background-color: var(--color-body-bg);
+	min-height: 100vh;
+}
+
+@media (max-width: 736px) {
+	body {
+		max-width: 100%;
+		margin: 0;
+	}
+}
+
+h1 {
+	font-weight: bold;
+	font-size: var(--font-size-h1);
+	padding: 20px 0;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: var(--font-size-h2);
+	padding: 16px 0;
+}
+
+/* 双方向チャット -------------------------------------------------------- */
+
 #form {
-	background: rgba(0, 0, 0, 0.15);
+	background: var(--color-chat-form-bg);
 	padding: 0.25rem;
 	position: fixed;
 	bottom: 0;
-	left: 0;
-	right: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: var(--max-width);
+	width: 100%;
 	display: flex;
 	height: 3rem;
 	box-sizing: border-box;
 	backdrop-filter: blur(10px);
+}
+
+@media (max-width: 736px) {
+	#form {
+		left: 0;
+		transform: none;
+		max-width: 100%;
+	}
 }
 
 #input {
@@ -57,13 +139,13 @@ body {
 }
 
 #form>button {
-	background: #333;
+	background: var(--color-button-default);
 	border: none;
 	padding: 0 1rem;
 	margin: 0.25rem;
 	border-radius: 3px;
 	outline: none;
-	color: #fff;
+	color: var(--color-text-primary);
 }
 
 #messages {
@@ -77,24 +159,10 @@ body {
 }
 
 #messages>li:nth-child(odd) {
-	background: #efefef;
+	background: var(--color-chat-messages-bg);
 }
 
-
-/* 共通 */
-h1 {
-	font-weight: bold;
-	font-size: xx-large;
-	padding: 20px 0;
-}
-
-h2 {
-	font-weight: bold;
-	font-size: x-large;
-	padding: 16px 0;
-}
-
-/* Link ボタン */
+/* Link ボタン -------------------------------------------------------- */
 
 .btn-wrapper {
 	margin: 1rem 1rem;
@@ -103,19 +171,19 @@ h2 {
 .btn {
 	display: inline-block;
 	padding: 1rem 1.5rem;
-	background-color: #BDBDBD;
-	color: #101010;
+	background-color: var(--color-button-default);
+	color: var(--color-text-primary);
 	border-radius: 0.25rem;
 	text-decoration: none;
 	transition: background-color 0.2s;
 }
 
 .btn:hover {
-	background-color: #86b8e9;
+	background-color: var(--color-button-hover);
 }
 
+/* hold-data 送信ボタン -------------------------------------------------------- */
 
-/* hold-data 送信ボタン */
 .send-form {
 	margin: 1rem 1rem;
 }
@@ -127,21 +195,21 @@ h2 {
 	/* 見た目 */
 	display: inline-block;
 	padding: 0.5rem 1rem;
-	background-color: #BDBDBD;
-	color: #101010;
+	background-color: var(--color-button-default);
+	color: var(--color-text-primary);
 	border-radius: 0.25rem;
 	text-decoration: none;
 	transition: background-color 0.2s;
 }
 
 .send-btn:hover {
-	background-color: #86b8e9;
+	background-color: var(--color-button-hover);
 }
 
 .send-form input {
 	/* 見た目 */
-	background-color: #ffffff;
+	background-color: var(--color-input-background);
 	padding: 0.5rem 1rem;
-	outline: solid 0.1rem #BDBDBD;
+	outline: solid 0.1rem var(--color-input-border);
 	border-radius: 0.25rem;
 }
