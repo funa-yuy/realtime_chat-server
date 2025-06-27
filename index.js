@@ -2,6 +2,8 @@ const express = require('express');
 const { createServer } = require('node:http');
 const { join } = require('node:path');
 const { Server } = require('socket.io');
+// 同期機能(synchro)
+const { handleSyncEvents } = require('./sync-handler');
 
 const app = express();
 const server = createServer(app);
@@ -32,6 +34,9 @@ io.on('connection', (socket) => {
 		console.log('接続が切れました');
 	});
 });
+
+// 同期機能(synchro)
+handleSyncEvents(io);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
