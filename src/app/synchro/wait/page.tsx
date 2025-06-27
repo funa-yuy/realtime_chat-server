@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import SyncComponent from '../sync-component';
 import { useUserRole } from '../../../hooks/useUserRole'; // カスタムフックをインポート
 
+// メインのコンポーネント ----------------------------------------------------------------------
 function WaitPageContent() {
 	const router = useRouter();
 	// カスタムフックで役割を取得。役割がない場合は/synchroにリダイレクト

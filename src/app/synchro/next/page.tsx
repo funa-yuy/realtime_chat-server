@@ -23,6 +23,7 @@ function AnswererView() {
 	);
 }
 
+// メインのコンポーネント ----------------------------------------------------------------------
 function NextPageContent() {
 	// カスタムフックで役割を取得。役割がない場合は/synchroにリダイレクト
 	const userRole = useUserRole('/synchro');
