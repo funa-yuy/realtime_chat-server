@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
 export default function SynchroPage() {
-	const sessionId = 'test-session';
+	// 4桁のランダムな英数字でセッションIDを生成
+	const sessionId = Math.random().toString(36).substring(2, 6);
 
 	return (
 		<div>
