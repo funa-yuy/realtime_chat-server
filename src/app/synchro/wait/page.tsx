@@ -44,6 +44,7 @@ function WaitPageContent() {
 
 export default function WaitPage() {
 	return (
+		// useSearchParams を使うコンポーネントは Suspense でラップする必要がある
 		<Suspense fallback={<div>読み込み中...</div>}>
 			<WaitPageContent />
 		</Suspense>

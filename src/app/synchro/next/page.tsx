@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { useUserRole } from '../../../hooks/useUserRole'; // カスタムフックをインポート
 
 // 質問者用の表示 ----------------------------------------------------------------------
@@ -22,8 +23,7 @@ function AnswererView() {
 	);
 }
 
-// 表示される画面 ----------------------------------------------------------------------
-export default function NextPage() {
+function NextPageContent() {
 	// カスタムフックで役割を取得。役割がない場合は/synchroにリダイレクト
 	const userRole = useUserRole('/synchro');
 
@@ -56,5 +56,14 @@ export default function NextPage() {
 				<Link href="/" className="btn">アプリケーションTOPへ</Link>
 			</div>
 		</div>
+	);
+}
+
+export default function NextPage() {
+	return (
+		// useSearchParams を使うコンポーネントは Suspense でラップする必要がある
+		<Suspense fallback={<div>読み込み中...</div>}>
+			<NextPageContent />
+		</Suspense>
 	);
 }

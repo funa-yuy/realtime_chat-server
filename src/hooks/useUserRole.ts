@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 
 type UserRole = 'questioner' | 'answerer' | null;
 
-/* 現状、synchro内で使用。 */
+/* 現状: synchro内で使用。 */
 
 /**
  * sessionStorageからユーザーの役割（role）を読み込むカスタムフック。
@@ -20,7 +20,7 @@ export function useUserRole(redirectTo: string = '/'): UserRole {
 		if (savedRole) {
 			setUserRole(savedRole);
 		} else {
-			// 役割が設定されていない場合はリダイレクト
+			// 役割が設定されていない場合、引数で与えられたページにリダイレクト
 			alert('役割が設定されていません。役割選択ページに戻ります。');
 			router.push(redirectTo);
 		}
