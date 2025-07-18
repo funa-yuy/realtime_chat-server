@@ -6,6 +6,8 @@ const { Server } = require('socket.io');
 const { handleSyncEvents } = require('./sync-handler');
 // 2人制限機能(limit)
 const { handleLimitPlayer } = require('./limit-player');
+// セッション同期機能(sync-session)
+const { handleSyncSession } = require('./sync-session-handler');
 
 const app = express();
 const server = createServer(app);
@@ -37,11 +39,14 @@ io.on('connection', (socket) => {
 	});
 });
 
-// 同期機能(synchro)
+// セッションIDありの同期機能(synchro)
 handleSyncEvents(io);
 
 // 2人制限機能(limit)
 handleLimitPlayer(io);
+
+// セッション同期機能(sync-session)
+handleSyncSession(io);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
